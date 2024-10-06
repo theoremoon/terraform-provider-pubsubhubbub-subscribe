@@ -13,10 +13,8 @@ A terraform provider for subscribing/unsubscribing topic URLs to a PubSubHubbub 
 ## Example Usage
 
 ```terraform
-provider "hatenablog-members" {
-  username = "hatenablog-tf-test"
-  apikey = var.APIKEY
-  blog_host = "tf-test.hatenablog.com"
+provider "pubsubhubbub-subscribe" {
+  hub_url = "https://pubsubhubbub.appspot.com/"
 }
 ```
 
