@@ -17,9 +17,9 @@ type SubscribeResource struct {
 }
 
 type subscribeResourceModel struct {
-	CallbackURL types.String `tfsdk:"username"`
-	TopicURL    types.String `tfsdk:"owner"`
-	HMACSecret  types.String `tfsdk:"apikey"`
+	CallbackURL types.String `tfsdk:"callback_url"`
+	TopicURL    types.String `tfsdk:"topic_url"`
+	HMACSecret  types.String `tfsdk:"hmac_secret"`
 }
 
 // ensure
@@ -65,7 +65,7 @@ func (r *SubscribeResource) Schema(_ context.Context, req resource.SchemaRequest
 	}
 }
 
-func (r *SubscribeResource) Configure(req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+func (r *SubscribeResource) Configure(_ context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}

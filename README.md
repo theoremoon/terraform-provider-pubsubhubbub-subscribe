@@ -1,31 +1,24 @@
-# terraform-provider-hatenablog-members
+# terraform-provider-pubsubhubbub-subscribe
 
-A terraform provider for managing members of the Hatena Blog.
+A terraform provider to register subscription to PubSubHubbub.
 
 ## example
 
 ```hcl
 terraform {
   required_providers {
-    hatenablog-members = {
-      source = "hatena/hatenablog-members"
-      version = "~> 0.1.1"
+    pubsubhubbub-subscribe = {
     }
   }
 }
 
-variable "HATENABLOG_APIKEY" {
-  type = string
-}
-    
-provider "hatenablog-members" { 
-  username = "hatenablog-tf-test"
-  apikey = var.HATENABLOG_APIKEY
-  blog_host = "tf-test.hatenablog.com"
+provider "pubshubhubbub-subscribe" { 
+  hub_url = "https://pubsubhubbub.appspot.com/"
 }
 
-resource "hatenablog-members_member" "member" {
-  username = "hatenablog-tf-test2"
-  role = "admin"
+resource "pubsubhubbub-subscribe_subscribe" "example" {
+  topic_url = "https://example.com/feed"
+  callback_url = "https://example.com/callback
+  secret = "123456"
 }
 ```

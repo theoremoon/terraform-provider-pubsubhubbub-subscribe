@@ -16,7 +16,7 @@ type subscribeProvider struct {
 }
 
 type subscribeProviderModel struct {
-	HubUrl types.String `tfsdk:"blog_host"`
+	HubUrl types.String `tfsdk:"hub_url"`
 }
 
 type subscribeProviderData struct {
@@ -64,7 +64,7 @@ func (p *subscribeProvider) Configure(ctx context.Context, req provider.Configur
 	if config.HubUrl.IsNull() {
 		hubURL = "https://pubsubhubbub.appspot.com/"
 	} else {
-		hubURL = config.HubUrl.String()
+		hubURL = config.HubUrl.ValueString()
 	}
 
 	client := client.NewClient(p.version, hubURL)
